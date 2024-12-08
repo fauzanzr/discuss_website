@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <button class="back-btn" title="Go back">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <span class="nav-title">Discussion</span>
+        </div>
+        <div class="nav-right">
+            <div class="notification">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <div class="profile">
+                <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=John" alt="Profile Picture" class="profile-pic">
+                <div class="profile-dropdown">
+                    <div class="profile-info">
+                        <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=John" alt="Profile Picture">
+                        <div>
+                            <h4>John Doe</h4>
+                            <p>john.doe@example.com</p>
+                        </div>
+                    </div>
+                    <div class="dropdown-items">
+                        <a href="#"><i class="fas fa-user"></i>Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i>Settings</a>
+                        <a href="dashboard.php"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="discussion-post">
+            <div class="post-header">
+                <div class="post-info">
+                    <h1 class="discussion-title">The Truth About Area 51: What They Don't Want You to Know</h1>
+                    <div class="post-metadata">
+                        <span class="post-author">Posted by <a href="#" class="author-link">Alex Thompson</a></span>
+                        <span class="post-date">2 hours ago</span>
+                        <span><i class="far fa-comment"></i>42 comments</span>
+                    </div>
+                </div>
+                <div class="post-actions">
+                    <div class="votes">
+                        <button class="love-btn" title="Love this post"><i class="fas fa-heart"></i></button>
+                        <span class="love-count">42</span>
+                    </div>
+                    <button class="report-btn post-report-btn" title="Report this post"><i class="fas fa-flag"></i></button>
+                </div>
+            </div>
+
+            <div class="post-content">
+                <p class="post-text">Located in southern Nevada, Area 51 has been the subject of intense speculation and conspiracy theories for decades. While officially acknowledged by the CIA in 2013 as a testing site for military aircraft, its extreme secrecy and unusual activities have led to countless theories about its true purpose. From alleged alien technology research to advanced military aircraft development, the facility continues to generate worldwide interest and debate.</p>
+            </div>
+
+            <button class="new-comment-btn">
+                <i class="fas fa-plus"></i>
+                New Comment
+            </button>
+
+            <div class="new-comment-form hidden">
+                <textarea placeholder="What are your thoughts?"></textarea>
+                <div class="form-actions">
+                    <button class="cancel-comment">Cancel</button>
+                    <button class="submit-comment">Comment</button>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Sarah" alt="User Avatar" class="user-avatar">
+                        <div class="comment-info">
+                            <div class="user-info">
+                                <span class="username">Sarah Parker</span>
+                                <span class="user-badge" title="Top Contributor">⭐</span>
+                            </div>
+                            <span class="comment-time">1 hour ago</span>
+                        </div>
+                    </div>
+                    <p class="comment-text">This is absolutely fascinating! I've been researching this topic for years, and there are still so many unanswered questions. The government's secrecy only fuels more speculation.</p>
+                    <div class="comment-actions">
+                        <button class="share-btn"><i class="fas fa-share"></i> Share</button>
+                        <button class="report-btn"><i class="fas fa-flag"></i> Report</button>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Mike" alt="User Avatar" class="user-avatar">
+                        <div class="comment-info">
+                            <div class="user-info">
+                                <span class="username">Mike Johnson</span>
+                                <span class="user-badge" title="Skeptic">🤔</span>
+                            </div>
+                            <span class="comment-time">45 minutes ago</span>
+                        </div>
+                    </div>
+                    <p class="comment-text">I remain skeptical about these claims. While there's certainly something going on at Area 51, we should be careful not to jump to conclusions without solid evidence.</p>
+                    <div class="comment-actions">
+                        <button class="share-btn"><i class="fas fa-share"></i> Share</button>
+                        <button class="report-btn"><i class="fas fa-flag"></i> Report</button>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Emily" alt="User Avatar" class="user-avatar">
+                        <div class="comment-info">
+                            <div class="user-info">
+                                <span class="username">Emily Chen</span>
+                                <span class="user-badge" title="Researcher">📚</span>
+                            </div>
+                            <span class="comment-time">30 minutes ago</span>
+                        </div>
+                    </div>
+                    <p class="comment-text">Here's an interesting fact: Area 51 was officially acknowledged by the CIA in 2013 through declassified documents. The base was primarily used for testing reconnaissance aircraft during the Cold War.</p>
+                    <div class="comment-actions">
+                        <button class="share-btn"><i class="fas fa-share"></i> Share</button>
+                        <button class="report-btn"><i class="fas fa-flag"></i> Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Report Content</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <p class="modal-description">Select the type of violation that corresponds to the content you encountered:</p>
+                    
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="hatred" name="violation" value="hatred">
+                            <label for="hatred">
+                                <strong>Hatred or Discrimination</strong>
+                                <span class="description">Content that insults, degrades, or incites hatred against individuals or groups based on race, religion, ethnicity, or class.</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="hoax" name="violation" value="hoax">
+                            <label for="hoax">
+                                <strong>Hoaxes or Disinformation</strong>
+                                <span class="description">False information that can mislead users or cause panic.</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="explicit" name="violation" value="explicit">
+                            <label for="explicit">
+                                <strong>Pornographic or Violent Content</strong>
+                                <span class="description">Material containing violence, torture, or sexually explicit details.</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="bullying" name="violation" value="bullying">
+                            <label for="bullying">
+                                <strong>Bullying or Insulting</strong>
+                                <span class="description">Content that insults, bullies or intimidates individuals or groups.</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="political" name="violation" value="political">
+                            <label for="political">
+                                <strong>Unethical Political Content</strong>
+                                <span class="description">Content that spreads hate speech or political provocations that can divide society.</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="spam" name="violation" value="spam">
+                            <label for="spam">
+                                <strong>Spam or Unwanted Advertising</strong>
+                                <span class="description">Content that is irrelevant or aims for unauthorized commercial promotion.</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="other" name="violation" value="other">
+                            <label for="other">
+                                <strong>Other</strong>
+                                <span class="description">Other violations not mentioned above.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additional-info">Additional Information</label>
+                        <textarea id="additional-info" name="additional-info" placeholder="Please provide more details about the violation..."></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

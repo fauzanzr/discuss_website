@@ -1,0 +1,952 @@
+:root {
+    --primary-color: #1a73e8;
+    --primary-color-rgb: 26, 115, 232;
+    --secondary-color: #5f6368;
+    --background-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --border-color: #dadce0;
+    --success-color: #34a853;
+    --error-color: #ea4335;
+    --warning-color: #fbbc04;
+    --info-color: #4285f4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--surface-color);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.back-btn, .share-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.back-btn:hover, .share-btn:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+}
+
+.notification {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification i {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--error-color);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.share-link {
+    margin-top: 10px;
+}
+
+#shareBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#shareBtn:hover {
+    background-color: #0056b3;
+}
+
+#shareNotification {
+    margin-left: 15px;
+    font-size: 0.9em;
+    color: green;
+    display: none;
+}
+
+#shareNotification.visible {
+    display: inline-block;
+}
+
+
+/* Profile Dropdown */
+.profile {
+    position: relative;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--surface-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 240px;
+    padding: 1rem;
+    display: none;
+    z-index: 1000;
+    animation: slideDown 0.2s ease-out;
+}
+
+.profile-dropdown.show {
+    display: block;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+}
+
+.profile-info img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.profile-info h4 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.profile-info p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.dropdown-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dropdown-items a {
+    text-decoration: none;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-items a:hover {
+    background-color: var(--background-color);
+}
+
+.dropdown-items i {
+    width: 20px;
+    margin-right: 0.5rem;
+    color: var(--secondary-color);
+}
+
+/* Main Content */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.discussion-post {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.post-info {
+    flex: 1;
+}
+
+.post-metadata {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.post-actions {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-actions .votes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.post-actions .love-btn {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+.post-actions .love-count {
+    font-size: 1.1rem;
+}
+
+.post-report-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.post-report-btn:hover {
+    background-color: rgba(244, 67, 54, 0.1);
+    transform: scale(1.1);
+}
+
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.post-meta i {
+    margin-right: 0.3rem;
+}
+
+.discussion-title {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.post-content {
+    margin: 2rem 0 3rem;
+}
+
+.post-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.post-summary {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--background-secondary);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.post-body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.post-body h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
+}
+
+.post-body p {
+    margin-bottom: 1.5rem;
+}
+
+.key-points {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--background-secondary);
+    border-radius: 8px;
+}
+
+.key-points h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.key-points ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.key-points li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.key-points li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* New Comment Button */
+.new-comment-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+    margin-bottom: 2rem;
+}
+
+.new-comment-btn:hover {
+    background-color: #1557b0;
+}
+
+/* New Comment Form */
+.new-comment-form {
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.new-comment-form.hidden {
+    display: none;
+}
+
+.new-comment-form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.cancel-comment, .submit-comment {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.cancel-comment {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.submit-comment {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+}
+
+/* Comments */
+.comment {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.username {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.user-badge {
+    font-size: 0.8rem;
+}
+
+.comment-time {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.comment-text {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.comment-actions button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+}
+
+.comment-actions button:hover {
+    color: var(--primary-color);
+    background-color: var(--background-secondary);
+}
+
+.comment-actions button i {
+    font-size: 0.85rem;
+}
+
+.votes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.upvote, .downvote {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-color);
+    padding: 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.upvote:hover, .downvote:hover {
+    background-color: var(--background-color);
+}
+
+.upvote.active {
+    color: var(--success-color);
+}
+
+.downvote.active {
+    color: var(--error-color);
+}
+
+.vote-count {
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 3ch;
+    text-align: center;
+}
+
+.reply-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.reply-btn:hover {
+    background-color: var(--background-color);
+}
+
+.love-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-color);
+    padding: 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.love-btn:hover {
+    background-color: rgba(234, 67, 53, 0.1);
+    transform: scale(1.1);
+}
+
+.love-btn.active {
+    color: #e91e63;
+    animation: pulse 0.3s ease;
+}
+
+.love-count {
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 3ch;
+    text-align: center;
+}
+
+.author-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    padding: 2px 4px;
+    margin: -2px -4px;
+    border-radius: 4px;
+}
+
+.author-link:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    text-decoration: underline;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1000;
+}
+
+.toast {
+    background: var(--surface-color);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-success {
+    border-left: 4px solid var(--success-color);
+}
+
+.toast-error {
+    border-left: 4px solid var(--error-color);
+}
+
+.toast-warning {
+    border-left: 4px solid var(--warning-color);
+}
+
+.toast-info {
+    border-left: 4px solid var(--info-color);
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Report Button */
+.report-btn {
+    color: var(--error-color) !important;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: var(--error-color);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.radio-option:hover {
+    background-color: var(--background-secondary);
+}
+
+.radio-option input[type="radio"] {
+    margin-top: 0.25rem;
+}
+
+.radio-option label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    cursor: pointer;
+}
+
+.radio-option strong {
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.radio-option .description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.form-group textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.modal-footer button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.cancel-btn:hover {
+    background-color: var(--background-secondary);
+}
+
+.submit-btn {
+    background-color: var(--error-color);
+    border: none;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+
+    .container {
+        padding: 0 0.5rem;
+    }
+
+    .discussion-post {
+        padding: 1.5rem;
+    }
+
+    .discussion-title {
+        font-size: 1.5rem;
+    }
+
+    .post-meta {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .comment-actions {
+        flex-wrap: wrap;
+    }
+
+    .profile-dropdown {
+        width: calc(100vw - 2rem);
+        right: -1rem;
+    }
+}
+
+/* Common Styles for both Comment and Report Forms */
+.new-comment-btn, .new-report-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.new-comment-btn:hover, .new-report-btn:hover {
+    background-color: #45a049;
+}
+
+.new-comment-form, .new-report-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.new-comment-form.hidden, .new-report-form.hidden {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+button[type="submit"], button[type="button"] {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button[type="button"].cancel-comment, button[type="button"].cancel-report {
+    background-color: #f44336;
+    color: white;
+}
+
+button[type="button"].cancel-comment:hover, button[type="button"].cancel-report:hover {
+    background-color: #d32f2f;
+}
+
